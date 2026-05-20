@@ -9,6 +9,7 @@ Route::get('/', function () {
 
 Route::resource('/fakultas', FakultasController::class);
 Route::resource('/prodi', ProdiController::class);
+//
 // Route::get('/fakultas', function () {
 //     return view('fakultas.list-fakultas');
 // });
