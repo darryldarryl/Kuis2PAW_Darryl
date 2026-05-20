@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class ProdiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $prodis = prodi::orderByDesc('created_at')->get();
@@ -19,17 +17,12 @@ class ProdiController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view("prodi.add-prodi");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         // Catatan: Validasi max:5 untuk nama prodi/kaprodi sengaja dipertahankan sesuai kode Anda, 
