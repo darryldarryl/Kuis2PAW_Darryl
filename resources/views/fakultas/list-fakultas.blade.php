@@ -1,57 +1,98 @@
 <x-layout>
+
     <div class="container py-5">
 
-        {{-- Header --}}
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        {{-- HEADER --}}
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
 
             <div>
-                <h2 class="fw-bold text-primary mb-1">
-                    📚 List Fakultas
+
+                <h2 class="fw-bold mb-1 text-info">
+                    🌊 List Fakultas
                 </h2>
 
-                <p class="text-muted mb-0">
+                <p class="text-light opacity-75 mb-0">
                     Data seluruh fakultas universitas
                 </p>
+
             </div>
 
-            <a href="/fakultas/create" class="btn btn-primary rounded-3 shadow-sm">
-                + Tambah Fakultas
+            <a href="/fakultas/create"
+               class="btn rounded-4 shadow border-0 text-white px-4"
+               style="
+                    background: linear-gradient(135deg, #00b4d8, #0077b6);
+               ">
+
+                ➕ Tambah Fakultas
+
             </a>
 
         </div>
 
-        {{-- Card --}}
-        <div class="card border-0 shadow-lg rounded-4">
+
+        {{-- CARD --}}
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden"
+             style="
+                background: rgba(255,255,255,0.08);
+                backdrop-filter: blur(14px);
+                border: 1px solid rgba(255,255,255,0.1);
+             ">
 
             <div class="card-body p-4">
 
                 <div class="table-responsive">
 
-                    <table class="table table-hover align-middle">
+                    <table class="table align-middle table-borderless text-white">
 
-                        <thead class="table-primary">
-                            <tr>
-                                <th width="5%">No</th>
-                                <th>Nama Fakultas</th>
-                                <th>Nama Dekan</th>
-                                <th width="30%" class="text-center">Aksi</th>
+                        {{-- TABLE HEADER --}}
+                        <thead>
+
+                            <tr style="
+                                    background: rgba(0,180,216,0.25);
+                                    backdrop-filter: blur(8px);
+                                ">
+
+                                <th class="py-3 rounded-start-4">
+                                    No
+                                </th>
+
+                                <th class="py-3">
+                                    🐠 Nama Fakultas
+                                </th>
+
+                                <th class="py-3">
+                                    🪸 Nama Dekan
+                                </th>
+
+                                <th class="py-3 text-center rounded-end-4">
+                                    ⚓ Aksi
+                                </th>
+
                             </tr>
+
                         </thead>
 
+
+                        {{-- TABLE BODY --}}
                         <tbody>
 
                             @forelse ($fakultas as $item)
 
-                                <tr>
+                                <tr style="
+                                        background: rgba(255,255,255,0.04);
+                                        border-bottom: 1px solid rgba(255,255,255,0.05);
+                                   ">
 
-                                    <td class="fw-semibold">
+                                    <td class="fw-semibold py-3">
                                         {{ $loop->iteration }}
                                     </td>
 
                                     <td>
-                                        <span class="fw-bold text-dark">
+
+                                        <span class="fw-bold text-info">
                                             {{ $item->nama_fakultas }}
                                         </span>
+
                                     </td>
 
                                     <td>
@@ -60,22 +101,34 @@
 
                                     <td class="text-center">
 
-                                        <div class="d-flex justify-content-center gap-2">
+                                        <div class="d-flex justify-content-center gap-2 flex-wrap">
 
-                                            {{-- Detail --}}
+                                            {{-- DETAIL --}}
                                             <a href="/fakultas/{{ $item->id }}"
-                                               class="btn btn-info btn-sm rounded-3 text-white">
+                                               class="btn btn-sm rounded-4 text-white border-0 shadow-sm"
+                                               style="
+                                                    background: linear-gradient(135deg, #48cae4, #0096c7);
+                                               ">
+
                                                 👁 Detail
+
                                             </a>
 
-                                            {{-- Edit --}}
+
+                                            {{-- EDIT --}}
                                             <a href="/fakultas/{{ $item->id }}/edit"
-                                               class="btn btn-warning btn-sm rounded-3 text-white">
+                                               class="btn btn-sm rounded-4 text-white border-0 shadow-sm"
+                                               style="
+                                                    background: linear-gradient(135deg, #00b4d8, #0077b6);
+                                               ">
+
                                                 ✏ Edit
+
                                             </a>
 
-                                            {{-- Hapus --}}
-                                            <form action="/fakultas/{{ $item->id }}" 
+
+                                            {{-- DELETE --}}
+                                            <form action="/fakultas/{{ $item->id }}"
                                                   method="POST"
                                                   onsubmit="return confirm('Yakin ingin menghapus data ini?')">
 
@@ -83,8 +136,13 @@
                                                 @method("DELETE")
 
                                                 <button type="submit"
-                                                        class="btn btn-danger btn-sm rounded-3">
+                                                        class="btn btn-sm rounded-4 border-0 shadow-sm text-white"
+                                                        style="
+                                                            background: linear-gradient(135deg, #ef476f, #d62828);
+                                                        ">
+
                                                     🗑 Hapus
+
                                                 </button>
 
                                             </form>
@@ -98,9 +156,14 @@
                             @empty
 
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">
-                                        Data fakultas belum tersedia
+
+                                    <td colspan="4"
+                                        class="text-center py-5 text-light opacity-75">
+
+                                        🌊 Data fakultas belum tersedia
+
                                     </td>
+
                                 </tr>
 
                             @endforelse
@@ -113,14 +176,21 @@
 
             </div>
 
-            {{-- Footer --}}
-            <div class="card-footer bg-light text-center rounded-bottom-4">
-                <small class="text-muted">
-                    Sistem Informasi Fakultas
+
+            {{-- FOOTER --}}
+            <div class="card-footer text-center border-0 py-3"
+                 style="
+                    background: rgba(255,255,255,0.05);
+                 ">
+
+                <small class="text-light">
+                    🌊 Sistem Informasi Fakultas
                 </small>
+
             </div>
 
         </div>
 
     </div>
+
 </x-layout>

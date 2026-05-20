@@ -1,93 +1,184 @@
 <x-layout>
+
     <div class="container py-5">
+
         <div class="row justify-content-center">
+
             <div class="col-md-6">
 
-                <div class="card shadow-lg border-0 rounded-4">
-                    
-                    <div class="card-header bg-primary text-white text-center rounded-top-4 py-4">
-                        <h3 class="mb-0 fw-bold">
-                            Form Data Prodi
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden"
+                     style="
+                        background: rgba(255,255,255,0.08);
+                        backdrop-filter: blur(12px);
+                        border: 1px solid rgba(255,255,255,0.1);
+                     ">
+
+                    {{-- HEADER --}}
+                    <div class="card-header text-white text-center py-4 border-0"
+                         style="
+                            background: linear-gradient(135deg, #0077b6, #00b4d8);
+                         ">
+
+                        <h3 class="mb-2 fw-bold">
+                            🌊 Form Data Prodi
                         </h3>
-                        <small>Silakan isi data Prodi dengan lengkap</small>
+
+                        <small class="text-light">
+                            Silakan isi data Prodi dengan lengkap
+                        </small>
+
                     </div>
 
-                    <div class="card-body p-4">
 
+                    {{-- BODY --}}
+                    <div class="card-body p-4 text-white">
+
+                        {{-- ERROR --}}
                         @if ($errors->any())
-                            <div class="alert alert-danger">
+
+                            <div class="alert alert-danger rounded-4 border-0 shadow-sm">
+
                                 <ul class="mb-0">
+
                                     @foreach ($errors->all() as $error)
+
                                         <li>{{ $error }}</li>
+
                                     @endforeach
+
                                 </ul>
+
                             </div>
+
                         @endif
 
-                        <form action="{{ route("prodi.store") }}" method="POST">
+
+                        {{-- FORM --}}
+                        <form action="{{ route('prodi.store') }}" method="POST">
+
                             @csrf
 
+                            {{-- Nama Prodi --}}
                             <div class="mb-4">
+
                                 <label class="form-label fw-semibold">
-                                    Nama Prodi
+                                    🐠 Nama Prodi
                                 </label>
 
-                                <input 
+                                <input
                                     type="text"
                                     name="nama_prodi"
-                                    class="form-control form-control-lg rounded-3"
-                                    placeholder="Contoh: Fakultas Teknik"
-                                    
+                                    class="form-control form-control-lg rounded-4 border-0 shadow-sm"
+                                    placeholder="Contoh: Sistem Informasi"
+                                    style="
+                                        background: rgba(255,255,255,0.12);
+                                        color: white;
+                                        backdrop-filter: blur(8px);
+                                    "
                                 >
+
                             </div>
 
+
+                            {{-- Nama Kaprodi --}}
                             <div class="mb-4">
+
                                 <label class="form-label fw-semibold">
-                                    Nama Kaprodi
+                                    🪸 Nama Kaprodi
                                 </label>
 
-                                <input 
+                                <input
                                     type="text"
                                     name="nama_kaprodi"
-                                    class="form-control form-control-lg rounded-3"
+                                    class="form-control form-control-lg rounded-4 border-0 shadow-sm"
                                     placeholder="Contoh: Dr. Budi Santoso"
-                                    
+                                    style="
+                                        background: rgba(255,255,255,0.12);
+                                        color: white;
+                                        backdrop-filter: blur(8px);
+                                    "
                                 >
-                            </div>
-                             <div class="mb-4">
-                                <label class="form-label fw-semibold">
-                                    pilih Prodi
-                                </label>
-                                <select name="alias_prodi" id="alias_prodi">
-                                        <option value="SI">Sistem Informasi</option>
-                                     <option value="IF">Informatika</option>
-                                     <option value="MJ">Manajemen</option>
-                                     <option value="AK">Akutansi</option>
-                                </select>
+
                             </div>
 
-                            <div class="d-grid">
-                                <button 
-                                    type="submit"
-                                    class="btn btn-primary btn-lg rounded-3 shadow-sm"
+
+                            {{-- Alias Prodi --}}
+                            <div class="mb-4">
+
+                                <label class="form-label fw-semibold">
+                                    🐚 Pilih Prodi
+                                </label>
+
+                                <select
+                                    name="alias_prodi"
+                                    id="alias_prodi"
+                                    class="form-select form-select-lg rounded-4 border-0 shadow-sm"
+                                    style="
+                                        background: rgba(255,255,255,0.12);
+                                        color: white;
+                                        backdrop-filter: blur(8px);
+                                    "
                                 >
-                                    💾 Simpan Data
+
+                                    <option value="SI" class="text-dark">
+                                        Sistem Informasi
+                                    </option>
+
+                                    <option value="IF" class="text-dark">
+                                        Informatika
+                                    </option>
+
+                                    <option value="MJ" class="text-dark">
+                                        Manajemen
+                                    </option>
+
+                                    <option value="AK" class="text-dark">
+                                        Akuntansi
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            {{-- BUTTON --}}
+                            <div class="d-grid">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-lg rounded-4 shadow border-0 fw-semibold text-white"
+                                    style="
+                                        background: linear-gradient(135deg, #00b4d8, #0077b6);
+                                    "
+                                >
+                                    🌊 Simpan Data
                                 </button>
+
                             </div>
 
                         </form>
 
                     </div>
 
-                    <div class="card-footer text-center bg-light rounded-bottom-4">
-                        <small class="text-muted">
-                            Sistem Informasi Fakultas
+
+                    {{-- FOOTER --}}
+                    <div class="card-footer text-center border-0 py-3"
+                         style="
+                            background: rgba(255,255,255,0.05);
+                         ">
+
+                        <small class="text-light">
+                            🌊 Sistem Informasi Fakultas
                         </small>
+
                     </div>
 
                 </div>
 
             </div>
+
         </div>
+
     </div>
+
 </x-layout>
