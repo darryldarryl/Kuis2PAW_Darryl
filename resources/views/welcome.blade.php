@@ -108,7 +108,7 @@
                 <div class="col-lg-6">
 
                     <span class="badge bg-info text-dark px-3 py-2 rounded-pill mb-3">
-                        🌊 Sistem Informasi Bawah Laut
+                        🌊 Sistem Informasi 
                     </span>
 
                     <h1 class="display-3 fw-bold mb-4">
@@ -165,7 +165,7 @@
             <div class="text-center mb-5">
 
                 <h2 class="fw-bold display-6">
-                    🌊 Keunggulan Sistem Laut Dalam
+                    🌊 Keunggulan Sistem Informasi
                 </h2>
 
                 <p class="text-soft">
@@ -348,7 +348,7 @@
         <div class="container text-center">
 
             <h2 class="fw-bold display-6 mb-4">
-                🌊 Mulai Jelajahi Sistem Akademik Lautan
+                🌊 Mulai Jelajahi Sistem Akademik Dengan Tema Lautan
             </h2>
 
             <p class="lead text-soft mb-4">

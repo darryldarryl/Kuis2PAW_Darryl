@@ -54,7 +54,7 @@
 
 
                         {{-- FORM --}}
-                        <form action="{{ route('prodi.store') }}" method="POST">
+                        <form action="/prodi" method="POST" enctype="multipart/form-data">
 
                             @csrf
 
@@ -140,6 +140,18 @@
 
                             </div>
 
+                            <div class="mb-3">
+                                <label for="photo_kaprodi" class="form-label">
+                                    Photo kaprodi
+                                </label>
+                                <input 
+                                    type="file"
+                                    id="photo_kaprodi"
+                                    name="photo_Kaprodi"
+                                    class="form-control"
+                                    placeholder="Pilih Photo Kaprodi"
+                                >
+                            </div>
 
                             {{-- BUTTON --}}
                             <div class="d-grid">

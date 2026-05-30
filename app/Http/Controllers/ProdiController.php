@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\prodi;
+use App\Http\Requests\UpdateprodiRequest;
+use App\models\Fakultas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProdiController extends Controller
 {
@@ -27,26 +30,21 @@ class ProdiController extends Controller
     {
         // Catatan: Validasi max:5 untuk nama prodi/kaprodi sengaja dipertahankan sesuai kode Anda, 
         // namun idealnya bisa dinaikkan (misal max:100) jika nanti inputan asli Anda panjang.
-        $request->validate([
-            'nama_prodi' => ['required', 'max:100'],
-            'nama_kaprodi' => ['required', 'max:100'],
-            'alias_prodi' => ['required']
-        ],
-        [
-            'nama_prodi.required' => 'Nama Prodi wajib diisi',
-            'nama_prodi.max' => 'Nama Prodi maksimal 5 karakter',
-            'nama_kaprodi.required' => 'Nama Kaprodi wajib diisi',
-            'nama_kaprodi.max' => 'Nama Kaprodi maksimal 5 karakter',
-            'alias_prodi.required' => 'Alias prodi wajib diisi',
+        $validated = $request->validate([
+            'nama_prodi' => 'required|max:100',
+            'nama_kaprodi' => 'required|max:100',
+            'alias_prodi' => 'required',
+            'photo_Kaprodi' => 'required|mimetypes:image/*'
         ]);
 
-        prodi::create([
-            'nama_prodi' => $request->nama_prodi,
-            'nama_kaprodi' => $request->nama_kaprodi,
-            'alias_prodi' => $request->alias_prodi
-        ]);
+        $photoKaprodi = storage::disk('public')->putfile('prodi', $request->file('photo_Kaprodi'));
 
-        return redirect()->route("prodi.index")->with('success', "Berhasil ditambahkan data prodi");
+        $validated['photo_Kaprodi'] = $photoKaprodi;
+
+        // Simpan data ke database
+        prodi::create($validated);
+
+        return redirect()->back()->with('success', "Berhasil ditambahkan data prodi");
     }
 
     /**
